@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Build/Cesium/Widgets/widgets.css">
+    <style>
+        html,
+        body,
+        #cesiumContainer {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <script src="./Build/Cesium/Cesium.js"></script>
+    <script>
+        // token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5ZGY3NmZmMy03ZjIxLTQyM2MtYjhjZS0zMGNkM2ZlNTRhZjUiLCJpZCI6NDY3ODQsImlhdCI6MTYxNzY5NTA0OH0.gueXasToIJgRV1zoFZMvjTt3okWn8wXjpPUx1xa5N7c'
+        window.onload = function() {
+            let viewer = new Cesium.Viewer("cesiumContainer", {
+                terrainProvider: Cesium.createWorldTerrain({
+                    requestVertexNormals: true, //Needed to visualize slope
+                }),
+                // geocoder: false,
+                // homeButton: false,
+                // sceneModePicker: false,
+                // baseLayerPicker: false,
+                // navigationHelpButton: false,
+                // animation: false,
+                // creditContainer: "credit",
+                // timeline: false,
+                // fullscreenButton: false,
+                // vrButton: false,
+                skyBox: new Cesium.SkyBox({
+                    sources: {
+                        positiveX: './Textures/SkyBox/tycho2t3_80_px.jpg',
+                        negativeX: './Textures/SkyBox/tycho2t3_80_mx.jpg',
+                        positiveY: './Textures/SkyBox/tycho2t3_80_py.jpg',
+                        negativeY: './Textures/SkyBox/tycho2t3_80_my.jpg',
+                        positiveZ: './Textures/SkyBox/tycho2t3_80_pz.jpg',
+                        negativeZ: './Textures/SkyBox/tycho2t3_80_mz.jpg'
+                    },
+                    // show: false,
+                })
+            })
+
+            viewer.camera.setView({
+                destination: new Cesium.Cartesian3(
+                    290637.5534733206,
+                    5637471.593707632,
+                    2978256.8126927214
+                ),
+                orientation: {
+                    heading: 4.747266966349747,
+                    pitch: -0.2206998858596192,
+                    roll: 6.280340554587955,
+                },
+            });
+        }
+    </script>
+</body>
+
+</html>
